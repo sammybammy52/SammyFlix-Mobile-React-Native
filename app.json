@@ -1,12 +1,11 @@
 {
   "expo": {
-    "name": "auth-app",
+    "name": "SammyFlix",
     "slug": "auth-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
-    
+    "userInterfaceStyle": "dark",
     "updates": {
       "fallbackToCacheTimeout": 0
     },
@@ -19,11 +18,17 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      }
+        "backgroundColor": "#00000"
+      },
+      "package": "com.sammybammy52.authapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "3801033a-c607-4b41-a8c6-5a5d6268dd83"
+      }
     }
   }
 }

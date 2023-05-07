@@ -7,14 +7,18 @@ import { Provider } from "react-redux";
 import Splash from "./screens/Splash";
 import HomeTabs from "./screens/HomeTabs";
 import RegisterScreen from "./screens/RegisterScreen";
+import DetailsScreen from "./screens/DetailsScreen";
+import PlayerScreen from "./screens/PlayerScreen";
+import SearchPage from "./screens/SearchPage";
 
 const Stack = createNativeStackNavigator();
 
 function Navigation() {
 
   return (
-
-      <NavigationContainer> 
+    <>
+    <StatusBar backgroundColor="black" />
+    <NavigationContainer> 
         <Stack.Navigator>
         <Stack.Screen
               name="Splash"
@@ -33,12 +37,24 @@ function Navigation() {
             />
         <Stack.Screen
               name="HomeTabs"
-              options={{ headerShown: false }}
+              options={{ headerShown: false, }}
               component={HomeTabs}
+            />
+        <Stack.Screen
+              name="DetailsScreen"
+              options={{ headerShown: false }}
+              component={DetailsScreen}
+            />
+        <Stack.Screen
+              name="SearchPage"
+              options={{ headerShown: false, animation: 'slide_from_right' }}
+              component={SearchPage}
             />
             
         </Stack.Navigator>
       </NavigationContainer>
+    </>
+      
   );
 }
 

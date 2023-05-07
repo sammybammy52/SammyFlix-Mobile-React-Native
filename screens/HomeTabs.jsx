@@ -28,7 +28,7 @@ const HomeTabs = () => {
       <Tab.Navigator
         activeColor="#553c9a"
         inactiveColor="#fff"
-        barStyle={{ backgroundColor: "#000", borderTopWidth: 0.2, borderTopColor:'#333333', }}
+        barStyle={{ backgroundColor: "#000", borderTopWidth: 1, borderTopColor:'#333333', paddingTop: 0 }}
         labeled={true}
         ac
       >

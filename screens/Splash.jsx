@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React, { useEffect } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Feather } from "@expo/vector-icons";
 
 const Splash = ({navigation}) => {
     useEffect(() => {
@@ -19,8 +20,12 @@ const Splash = ({navigation}) => {
       };
     
   return (
-    <View className='flex-1 items-center justify-center bg-slate-900'>
-      <Text className="font-bold text-3xl text-white">Splash Screen</Text>
+    <View className='flex-1 items-center justify-center bg-black'>
+      <View className="flex-row gap-1">
+        <Feather name="play-circle" size={32} color="#553c9a" />
+          <Text className="text-white ml-1 text-xl">SAMMYFLIX</Text>
+      </View>
+      
     </View>
   )
 }

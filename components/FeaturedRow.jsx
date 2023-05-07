@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, View } from 'react-native'
+import { ScrollView, Text, View } from 'react-native'
 import React from 'react'
 import { AntDesign } from '@expo/vector-icons'; 
 import MovieCard from './MovieCard';
@@ -20,7 +20,7 @@ const FeaturedRow = ({ title, movies}) => {
       >
         {
             movies.map((movie) => (
-                <MovieCard key={movie._id} movie={movie}/>
+                <MovieCard key={movie.id} movie={movie}/>
             ))
         }
 
@@ -33,4 +33,3 @@ const FeaturedRow = ({ title, movies}) => {
 
 export default FeaturedRow
 
-const styles = StyleSheet.create({})
