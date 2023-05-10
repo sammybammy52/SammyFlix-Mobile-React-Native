@@ -57,7 +57,7 @@ const Dashboard = () => {
   
 
   return (
-    <SafeAreaView className="flex-1 justify-center items-center pt-4 bg-black">
+    <SafeAreaView className="flex-1 justify-center items-center pt-8 bg-black">
       <ScrollView>
         <View className="flex-row p-3 items-center justify-center">
           <Feather name="play-circle" size={24} color="#553c9a" />

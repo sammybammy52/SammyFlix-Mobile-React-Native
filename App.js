@@ -17,7 +17,7 @@ function Navigation() {
 
   return (
     <>
-    <StatusBar backgroundColor="black" />
+    <StatusBar backgroundColor="black" barStyle="light-content" />
     <NavigationContainer> 
         <Stack.Navigator>
         <Stack.Screen
