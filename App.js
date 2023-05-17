@@ -45,6 +45,12 @@ function Navigation() {
               options={{ headerShown: false }}
               component={DetailsScreen}
             />
+
+<Stack.Screen
+              name="PlayerScreen"
+              options={{ headerShown: false, animation: 'slide_from_right' }}
+              component={PlayerScreen}
+            />
         <Stack.Screen
               name="SearchPage"
               options={{ headerShown: false, animation: 'slide_from_right' }}

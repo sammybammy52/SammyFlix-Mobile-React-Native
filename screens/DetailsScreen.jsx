@@ -27,7 +27,9 @@ const DetailsScreen = () => {
   
     const handleOpenYouTube = () => {
         if (videos) {
-            Linking.openURL(`https://www.youtube.com/watch?v=${videos[0].key}`);
+           // Linking.openURL(`https://www.youtube.com/watch?v=${videos[0].key}`);
+
+           navigation.navigate('PlayerScreen', { key: videos[0].key});
         }
         
       };
@@ -56,7 +58,19 @@ const DetailsScreen = () => {
                     </View>
                    
                     <Text className=" text-gray-500 text-base py-4">{movie.overview}</Text>
-                    <Text className="text-white">{videos && videos[0]?.name}</Text>
+                    
+
+                    <Text className="text-white mt-4 font-semibold text-lg">Viewing Links</Text>
+                    
+                    <View className="flex-row gap-2 pt-6">
+                    <TouchableOpacity className="p-4 bg-purple-800 rounded-md">
+                            <Text className="text-white font-medium">Download Now</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity className="p-4 bg-gray-200 rounded-md">
+                            <Text className="font-medium">Watch Now</Text>
+                        </TouchableOpacity>
+                        
+                    </View>
                 </View>
             </View>
 
