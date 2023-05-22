@@ -10,8 +10,8 @@ const PlayerScreen = () => {
     params: { key },
   } = useRoute();
   return (
-    <SafeAreaView className="bg-black h-screen py-56">
-      <View className="h-full">
+    <SafeAreaView className="bg-black h-full py-36">
+      <View className="h-full bg-black">
         <WebView
           source={{ uri: `https://www.youtube.com/embed/${key}?playsinline=1` }}
           className="h-56"

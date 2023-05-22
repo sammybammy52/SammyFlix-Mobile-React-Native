@@ -2,12 +2,12 @@ import {  View, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 
-const MovieCard = ({ movie }) => {
+const TvCard = ({ movie }) => {
   const navigation = useNavigation();
 
   return (
     <TouchableOpacity className="mr-4" onPress={() => {
-      return navigation.navigate('DetailsScreen', movie);
+      return navigation.navigate('TvDetails', movie);
     }}>
       <View>
         <Image source={{
@@ -19,4 +19,4 @@ const MovieCard = ({ movie }) => {
   )
 }
 
-export default MovieCard
+export default TvCard

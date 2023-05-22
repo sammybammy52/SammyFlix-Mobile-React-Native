@@ -66,7 +66,7 @@ export const getVideos = async (movie_id) => {
 
 export const searchVideos = async (query) => {
     try {
-        const result = await ExtApiManager(`/search/movie?api_key=42e3ebca36f9d5efb6901ff9bb875c43&language=en-US&query=${query}&page=1&include_adult=false`, {
+        const result = await ExtApiManager(`/search/multi?api_key=42e3ebca36f9d5efb6901ff9bb875c43&language=en-US&query=${query}&page=1&include_adult=false`, {
             method: 'GET',
         });
         return result;

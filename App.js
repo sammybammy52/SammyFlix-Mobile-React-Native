@@ -10,6 +10,7 @@ import RegisterScreen from "./screens/RegisterScreen";
 import DetailsScreen from "./screens/DetailsScreen";
 import PlayerScreen from "./screens/PlayerScreen";
 import SearchPage from "./screens/SearchPage";
+import TvDetails from "./screens/TvDetails";
 
 const Stack = createNativeStackNavigator();
 
@@ -27,23 +28,28 @@ function Navigation() {
             />
         <Stack.Screen
               name="Login"
-              options={{ headerShown: false }}
+              options={{ headerShown: false, animation: 'slide_from_right' }}
               component={LoginScreen}
             />
             <Stack.Screen
               name="Register"
-              options={{ headerShown: false }}
+              options={{ headerShown: false, animation: 'slide_from_right' }}
               component={RegisterScreen}
             />
         <Stack.Screen
               name="HomeTabs"
-              options={{ headerShown: false, }}
+              options={{ headerShown: false, animation: 'slide_from_right' }}
               component={HomeTabs}
             />
         <Stack.Screen
               name="DetailsScreen"
-              options={{ headerShown: false }}
+              options={{ headerShown: false, animation: 'slide_from_right' }}
               component={DetailsScreen}
+            />
+            <Stack.Screen
+              name="TvDetails"
+              options={{ headerShown: false, animation: 'slide_from_right' }}
+              component={TvDetails}
             />
 
 <Stack.Screen

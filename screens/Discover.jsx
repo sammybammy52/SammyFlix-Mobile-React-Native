@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TextInput, View, Keyboard } from "react-native";
+import { StyleSheet, Text, TextInput, View, Keyboard, ScrollView } from "react-native";
 import { useState, useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Appbar } from "react-native-paper";
@@ -33,7 +33,7 @@ const Discover = () => {
   }, [query]);
   return (
     <>
-      <Appbar.Header className="bg-black border-b-[0.6px] border-[#ffffff64]">
+      <Appbar.Header className="bg-black ">
         <Appbar.BackAction
           onPress={() => {
             Keyboard.dismiss();
@@ -58,18 +58,18 @@ const Discover = () => {
           onPress={() => setquery("")}
         />
       </Appbar.Header>
-      <SafeAreaView className="bg-black ">
-        <View className="h-screen ">
+      <SafeAreaView className="bg-black h-full">
+        <ScrollView className=" bg-black mb-8">
           <>
           {suggestions.length !== 0 ?
-            suggestions.map((i) => <SearchSuggestions key={i.id} movie={i} />)
+            suggestions.map((i) => (i.media_type == "movie" || i.media_type =="tv" ? <SearchSuggestions key={i.id} movie={i} /> : <></>))
             : <View className='flex justify-center items-center pt-20'>
               <Text className='text-white'>Search for your favorite movies</Text>
             </View>
           }
           </>
           
-        </View>
+        </ScrollView>
       </SafeAreaView>
     </>
   );

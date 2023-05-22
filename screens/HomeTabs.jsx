@@ -28,7 +28,7 @@ const HomeTabs = () => {
       <Tab.Navigator
         activeColor="#553c9a"
         inactiveColor="#fff"
-        barStyle={{ backgroundColor: "#000", borderTopWidth: 1, borderTopColor:'#333333', paddingTop: 0 }}
+        barStyle={{ backgroundColor: "#000", borderTopWidth: 0.3, borderTopColor:'#333333', paddingTop: 0,  }}
         labeled={true}
         ac
       >
@@ -36,7 +36,7 @@ const HomeTabs = () => {
           name="Home"
           options={{
             tabBarIcon: ({ color, size }) => (
-              <Octicons name="home" color={color} size={24} />
+              <Octicons name="home" color={color} size={22} />
             ),
           }}
           component={Dashboard}
@@ -46,7 +46,7 @@ const HomeTabs = () => {
           name="Discover"
           options={{
             tabBarIcon: ({ color, size }) => (
-              <Octicons name="search" color={color} size={24} />
+              <Octicons name="search" color={color} size={22} />
             ),
           }}
           component={Discover}
@@ -57,7 +57,7 @@ const HomeTabs = () => {
           
           options={{
             tabBarIcon: ({ color, size }) => (
-              <Octicons name="person" color={color} size={24} />
+              <Octicons name="person" color={color} size={22} />
             ),
             tabBarBadge:3
           }}

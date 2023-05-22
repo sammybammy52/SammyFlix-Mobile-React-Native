@@ -24,7 +24,7 @@ const SearchPage = () => {
   return (
     <>
       <View>
-        <Appbar.Header className="bg-black border-b-[0.6px] border-[#ffffff64]">
+        <Appbar.Header className="bg-black">
           <Appbar.BackAction
             onPress={() => {
               navigation.goBack();
@@ -34,8 +34,8 @@ const SearchPage = () => {
           <Appbar.Content title="Search Results" color="#fff" />
         </Appbar.Header>
       </View>
-      <View>
-        <ScrollView>
+      <View className="bg-black h-full">
+        <ScrollView className="bg-black">
           <View>
             {searchResults.length !== 0 &&
               searchResults.map((i) => <MovieRow key={i.id} movie={i} />)}

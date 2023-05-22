@@ -1,5 +1,4 @@
 import { Image, SafeAreaView, View, Text, ScrollView, TouchableOpacity } from "react-native";
-import AvatarMobile from "../assets/avatar-mobile.jpg";
 import { FontAwesome5 } from '@expo/vector-icons'; 
 import { useState, useEffect } from "react";
 import { truncateText } from "../utils/Helpers";
@@ -12,8 +11,7 @@ const HomeCard = ({ popular }) => {
 
   useEffect(() => {
     setItems(popular);
-    console.log("hello")
-    console.log(popular);
+   
   }, [popular]);
 
   useEffect(() => {
