@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { FlatList, ScrollView, StyleSheet, Text, View } from "react-native";
 import { useEffect, useState } from "react";
 import { Appbar } from "react-native-paper";
 import { useNavigation, useRoute } from "@react-navigation/native";
@@ -34,13 +34,19 @@ const SearchPage = () => {
           <Appbar.Content title="Search Results" color="#fff" />
         </Appbar.Header>
       </View>
-      <View className="bg-black h-full">
-        <ScrollView className="bg-black">
+      <View className="bg-black flex-1">
+        <FlatList
+
+        data={searchResults}
+        renderItem={({item}) => <MovieRow movie={item} />}
+        keyExtractor={item => item.id}
+        />
+        {/* <ScrollView className="bg-black">
           <View>
             {searchResults.length !== 0 &&
               searchResults.map((i) => <MovieRow key={i.id} movie={i} />)}
           </View>
-        </ScrollView>
+        </ScrollView> */}
       </View>
     </>
   );

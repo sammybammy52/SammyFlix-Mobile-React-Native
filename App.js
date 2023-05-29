@@ -11,6 +11,7 @@ import DetailsScreen from "./screens/DetailsScreen";
 import PlayerScreen from "./screens/PlayerScreen";
 import SearchPage from "./screens/SearchPage";
 import TvDetails from "./screens/TvDetails";
+import SeasonDetails from "./screens/SeasonDetails";
 
 const Stack = createNativeStackNavigator();
 
@@ -61,6 +62,12 @@ function Navigation() {
               name="SearchPage"
               options={{ headerShown: false, animation: 'slide_from_right' }}
               component={SearchPage}
+            />
+
+<Stack.Screen
+              name="SeasonDetails"
+              options={{ headerShown: false, animation: 'slide_from_right' }}
+              component={SeasonDetails}
             />
             
         </Stack.Navigator>

@@ -10,3 +10,6 @@ export function truncateText(text, maxLength) {
     
   }
   
+ export function slugify(text) {
+    return text.replace(/\s+/g, '-').toLowerCase();
+  }

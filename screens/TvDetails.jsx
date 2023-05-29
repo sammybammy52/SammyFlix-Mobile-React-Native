@@ -15,7 +15,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import { getTvDetails, getTvVideos } from "../api/TvApi";
 import SeasonsCard from "../components/SeasonsCard";
 import YoutubeCard from "../components/YoutubeCard";
-import { truncateText } from "../utils/Helpers";
+import { truncateText, slugify } from "../utils/Helpers";
 
 const TvDetails = () => {
   const { params: movie } = useRoute();
@@ -25,6 +25,7 @@ const TvDetails = () => {
   const [videos, setVideos] = useState(null);
   const [teasers, setTeasers] = useState(null);
   const [firstAirDate, setFirstAirDate] = useState(null);
+  const [tvId, setTvId] = useState(null);
   const [seasons, setSeasons] = useState(null);
 
   const [videoFetchLoading, setVideoFetchLoading] = useState(false);
@@ -46,8 +47,8 @@ const TvDetails = () => {
     setDetailsLoading(true);
     const result = await getTvDetails(id);
     const tv = result.data;
-    console.log(tv);
     setFirstAirDate(tv.first_air_date);
+    setTvId(tv.id);
 
     const realSeasons = tv.seasons.filter((i) => {
       return i.season_number !== 0;
@@ -70,11 +71,11 @@ const TvDetails = () => {
     
   };
   const handleDownload = () => {
-    Linking.openURL(`https://tfpdl.se/?s=${movie?.name}`);
+    Linking.openURL(`https://tfpdl.se/?s=${encodeURIComponent(movie?.name)}`);
   }
 
   const handleWatch = () => {
-    Linking.openURL(`https://hdtoday.tv/search/${movie?.name}`);
+    Linking.openURL(`https://hdtoday.tv/search/${slugify(movie?.name)}`);
   }
   return (
     <>
@@ -115,13 +116,17 @@ const TvDetails = () => {
               </Text>
             </View>
             <Text className=" text-gray-500 text-base py-4">
-                    { readMore ? <>
-                      {movie?.overview} <TouchableOpacity onPress={() => setReadMore(false)}><Text className="font-semibold text-white">read less</Text></TouchableOpacity>
-                    </> : <>
-                    {truncateText(movie?.overview, 300)} <TouchableOpacity onPress={() => setReadMore(true)}><Text className="font-semibold text-white">read more</Text></TouchableOpacity>
-                    </>}
+                 {
+                  readMore ? <>
+                  {movie?.overview} 
+                  </>: <>
+                  { truncateText(movie?.overview, 160)} 
+                  </>
+                 }
                   </Text>
-            
+                 <TouchableOpacity className="w-full py-2 border-[2px] border-[#fff] rounded-lg" onPress={() => setReadMore(!readMore)}>
+                  <Text className="text-white text-center">{readMore ? <>Show Less</> : <>Show More</>}</Text>
+                 </TouchableOpacity>
 
             <Text className="text-white mt-4 font-semibold text-lg">
               Seasons {seasons && <>({seasons.length})</>}
@@ -144,7 +149,7 @@ const TvDetails = () => {
                     className="pt-4"
                   >
                     {seasons?.map((i) => (
-                      <SeasonsCard key={i.id} season={i} />
+                      <SeasonsCard key={i.id} season={i} bg={movie.backdrop_path} title={movie?.name} tvId={tvId}/>
                     ))}
                   </ScrollView>
                 </View>

@@ -2,13 +2,18 @@ import {  View, Image, TouchableOpacity, Text } from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 
-const SeasonsCard = ({ season }) => {
+const SeasonsCard = ({ season, bg, title, tvId }) => {
   const navigation = useNavigation();
 
   return (
     <TouchableOpacity className="mr-4" onPress={() => {
-    //   return navigation.navigate('SeasonDetails', season);
-        alert("Season Details Coming Soon")
+       return navigation.navigate('SeasonDetails', {
+        season: season,
+        bg: bg,
+        name: title,
+        tvId:tvId
+       });
+        //alert("Season Details Coming Soon")
     }}>
       <View>
         <Image source={{

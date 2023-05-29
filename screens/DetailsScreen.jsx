@@ -14,8 +14,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { getVideos } from "../api/MovieApi";
 import { FontAwesome } from "@expo/vector-icons";
 import YoutubeCard from "../components/YoutubeCard";
-import { truncateText } from "../utils/Helpers";
-
+import { truncateText, slugify } from "../utils/Helpers";
 const DetailsScreen = () => {
   const { params: movie } = useRoute();
   const navigation = useNavigation();
@@ -49,11 +48,11 @@ const DetailsScreen = () => {
   };
 
   const handleDownload = () => {
-    Linking.openURL(`https://tfpdl.se/?s=${movie?.title}`);
+    Linking.openURL(`https://tfpdl.se/?s=${encodeURIComponent(movie?.title)}`);
   };
 
   const handleWatch = () => {
-    Linking.openURL(`https://hdtoday.tv/search/${movie?.title}`);
+    Linking.openURL(`https://hdtoday.tv/search/${slugify(movie?.title)}`);
   };
   return (
     <>
@@ -93,22 +92,18 @@ const DetailsScreen = () => {
             </View>
 
             <Text className=" text-gray-500 text-base py-4">
-              {readMore ? (
-                <>
-                  {movie?.overview}{" "}
-                  <TouchableOpacity onPress={() => setReadMore(false)}>
-                    <Text className="font-semibold text-white">read less</Text>
-                  </TouchableOpacity>
-                </>
-              ) : (
-                <>
-                  {truncateText(movie?.overview, 300)}{" "}
-                  <TouchableOpacity onPress={() => setReadMore(true)}>
-                    <Text className="font-semibold text-white">read more</Text>
-                  </TouchableOpacity>
-                </>
-              )}
-            </Text>
+                 {
+                  readMore ? <>
+                  {movie?.overview} 
+                  </>: <>
+                  { truncateText(movie?.overview, 150)} 
+                  </>
+                 }
+                  </Text>
+                 <TouchableOpacity className="w-full py-2 border-[2px] border-[#fff] rounded-lg" onPress={() => setReadMore(!readMore)}>
+                  <Text className="text-white text-center">{readMore ? <>Show Less</> : <>Show More</>}</Text>
+                 </TouchableOpacity>
+
 
             <Text className="text-white mt-4 font-semibold text-lg">
               Videos and Teasers
