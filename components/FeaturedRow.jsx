@@ -1,4 +1,4 @@
-import { ScrollView, Text, View } from 'react-native'
+import {  Text, View, FlatList } from 'react-native'
 import React from 'react'
 import { AntDesign } from '@expo/vector-icons'; 
 import MovieCard from './MovieCard';
@@ -10,21 +10,18 @@ const FeaturedRow = ({ title, movies}) => {
         <AntDesign name="arrowright" size={24} color="white" />
       </View>
 
-      <ScrollView
-      horizontal
-      contentContainerStyle={{
-        paddingHorizontal: 15,
-      }}
-      showsHorizontalScrollIndicator={false}
-      className="pt-4"
-      >
-        {
-            movies.map((movie) => (
-                <MovieCard key={movie.id} movie={movie}/>
-            ))
-        }
+     
 
-      </ScrollView>
+      <FlatList
+      className="pt-4"
+      data={movies}
+      horizontal={true}
+      showsHorizontalScrollIndicator={false}
+      renderItem={({ item }) => (
+        <MovieCard  movie={item}/>
+      )}
+      keyExtractor={(item) => item.id}
+      />
     
 
     </View>

@@ -11,7 +11,7 @@ const MovieCard = ({ movie }) => {
     }}>
       <View>
         <Image source={{
-          uri: `https://image.tmdb.org/t/p/w300/${movie.poster_path}`,
+          uri: `https://image.tmdb.org/t/p/w300/${movie?.poster_path}`,
         }} className="h-56 w-36"/>
 
       </View>

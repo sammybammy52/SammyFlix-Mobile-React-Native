@@ -12,8 +12,16 @@ const Splash = ({navigation}) => {
     
       const handleGetToken = async () => {
         const dataToken = await AsyncStorage.getItem('AccessToken');
+        const firstLaunch = await AsyncStorage.getItem('firstLaunch');
         if (!dataToken) {
-          navigation.replace('Login');
+          if (!firstLaunch) {
+            navigation.replace('Login');
+          }
+          else{
+            AsyncStorage.setItem("firstLaunch", true);
+            navigation.replace('OnboardingScreen');
+          }
+          
         } else {
           navigation.replace('HomeTabs');
         }

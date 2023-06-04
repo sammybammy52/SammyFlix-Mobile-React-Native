@@ -45,7 +45,7 @@ const Discover = () => {
           className="bg-[#ffffff5e] w-[72%] h-[75%] rounded px-2 mr-4 text-white"
           value={query}
           onChangeText={(searchTerm) => setquery(searchTerm)}
-          placeholder="Search Movie Title"
+          placeholder="Search title"
           placeholderTextColor="#fff"
           returnKeyType="search" // Display search button on keyboard
           onSubmitEditing={handleSearch} // Trigger search action on submit
@@ -64,7 +64,7 @@ const Discover = () => {
           {suggestions.length !== 0 ?
             suggestions.map((i) => (i.media_type == "movie" || i.media_type =="tv" ? <SearchSuggestions key={i.id} movie={i} /> : <></>))
             : <View className='flex justify-center items-center pt-20'>
-              <Text className='text-white'>Search for your favorite movies</Text>
+              <Text className='text-white'>Search for your favorite movies and tv shows</Text>
             </View>
           }
           </>

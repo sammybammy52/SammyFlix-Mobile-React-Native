@@ -3,6 +3,7 @@ import {
   Text,
   View,
   ScrollView,
+  FlatList,
   Image,
   TouchableOpacity,
   ActivityIndicator,
@@ -140,18 +141,17 @@ const TvDetails = () => {
             ) : (
               <>
                 <View>
-                  <ScrollView
-                    horizontal
-                    contentContainerStyle={{
-                      paddingHorizontal: 0,
-                    }}
-                    showsHorizontalScrollIndicator={false}
-                    className="pt-4"
-                  >
-                    {seasons?.map((i) => (
-                      <SeasonsCard key={i.id} season={i} bg={movie.backdrop_path} title={movie?.name} tvId={tvId}/>
-                    ))}
-                  </ScrollView>
+                  
+                  <FlatList
+                  className="pt-4"
+                  data={seasons}
+                  horizontal={true}
+                  showsHorizontalScrollIndicator={false}
+                  renderItem={({ item }) => (
+                    <SeasonsCard season={item} bg={movie.backdrop_path} title={movie?.name} tvId={tvId}/>
+                  )}
+                  keyExtractor={(item) => item.id}
+                  />
                 </View>
               </>
             )}
@@ -169,18 +169,17 @@ const TvDetails = () => {
             ) : (
               <>
                 <View>
-                  <ScrollView
-                    horizontal
-                    contentContainerStyle={{
-                      paddingHorizontal: 0,
-                    }}
-                    showsHorizontalScrollIndicator={false}
-                    className="pt-4"
-                  >
-                    {teasers?.map((i) => (
-                      <YoutubeCard key={i.id} video_id={i.key} />
-                    ))}
-                  </ScrollView>
+                
+                  <FlatList
+                  className="pt-4"
+                  data={teasers}
+                  horizontal={true}
+                  showsHorizontalScrollIndicator={false}
+                  renderItem={({ item }) => (
+                    <YoutubeCard  video_id={item.key} />
+                  )}
+                  keyExtractor={(item) => item.id}
+                  />
                 </View>
               </>
             )}

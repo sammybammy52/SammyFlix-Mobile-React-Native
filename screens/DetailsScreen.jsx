@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Linking,
   ActivityIndicator,
+  FlatList,
 } from "react-native";
 import { useState, useEffect } from "react";
 import { useRoute, useNavigation } from "@react-navigation/native";
@@ -118,18 +119,18 @@ const DetailsScreen = () => {
             ) : (
               <>
                 <View>
-                  <ScrollView
-                    horizontal
-                    contentContainerStyle={{
-                      paddingHorizontal: 0,
-                    }}
-                    showsHorizontalScrollIndicator={false}
-                    className="pt-4"
-                  >
-                    {videos?.map((i) => (
-                      <YoutubeCard key={i.id} video_id={i.key} />
-                    ))}
-                  </ScrollView>
+                  
+
+                  <FlatList
+                  className="pt-4"
+                  data={videos}
+                  horizontal={true}
+                  showsHorizontalScrollIndicator={false}
+                  renderItem={({ item }) => (
+                    <YoutubeCard  video_id={item.key} />
+                  )}
+                  keyExtractor={(item) => item.id}
+                  />
                 </View>
               </>
             )}
