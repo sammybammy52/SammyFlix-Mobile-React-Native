@@ -14,7 +14,7 @@ const TvFeaturedRow = ({ title, movies}) => {
       
 
       <FlatList
-      className="pt-4"
+      className="pt-4 px-4"
       data={movies}
       horizontal={true}
       showsHorizontalScrollIndicator={false}

@@ -12,11 +12,7 @@ const Discover = () => {
   const [suggestions, setSuggestions] = useState([]);
   const navigation = useNavigation();
 
-  const fetchVideos = async () => {
-    const result = await searchVideos(query);
-    setSuggestions(result.data.results);
-    console.log(result.data.results);
-  };
+
   const handleSearch = () => {
     // Perform search functionality using the `searchText` value
 
@@ -25,12 +21,21 @@ const Discover = () => {
   };
 
   useEffect(() => {
-    if (query !== "") {
-      fetchVideos();
-    } else {
-      setSuggestions([]);
-    }
+    // Debounce function to delay the API call
+    const debounceFetchVideos = setTimeout(async () => {
+      if (query !== "") {
+        const result = await searchVideos(query);
+        setSuggestions(result.data.results);
+        console.log(result.data.results);
+      } else {
+        setSuggestions([]);
+      }
+    }, 500);
+
+    // Clear the timeout on every query change to avoid unnecessary API calls
+    return () => clearTimeout(debounceFetchVideos);
   }, [query]);
+
   return (
     <>
       <Appbar.Header className="bg-black ">
