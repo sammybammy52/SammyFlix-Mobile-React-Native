@@ -14,11 +14,11 @@ const Splash = ({navigation}) => {
         const dataToken = await AsyncStorage.getItem('AccessToken');
         const firstLaunch = await AsyncStorage.getItem('firstLaunch');
         if (!dataToken) {
-          if (!firstLaunch) {
+          if (firstLaunch && firstLaunch === 'no') {
             navigation.replace('Login');
           }
           else{
-            AsyncStorage.setItem("firstLaunch", true);
+            await AsyncStorage.setItem("firstLaunch", 'no');
             navigation.replace('OnboardingScreen');
           }
           
